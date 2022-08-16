@@ -1,6 +1,7 @@
 module.exports = {
   extends: [
     'alloy',
+    'alloy/react',
     'alloy/typescript',
   ],
   env: {
@@ -19,5 +20,6 @@ module.exports = {
   },
   rules: {
     // Customize your rules
+    "@typescript-eslint/no-require-imports": 'warn'
   },
 };

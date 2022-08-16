@@ -1,24 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useFonts } from 'expo-font';
+import Details from './screens/Details';
+import Home from './screens/Home';
+
+const Stack = createStackNavigator();
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'transparent',
+  },
+};
 
 export default function App() {
-  const displayName = (guy: number) => {
-    console.log('Hello world');
-  };
+  const [loaded] = useFonts({
+    interBold: require('./assets/fonts/Inter-Bold.ttf'),
+    interSemiBold: require('./assets/fonts/Inter-SemiBold.ttf'),
+    interMedium: require('./assets/fonts//Inter-Medium.ttf'),
+    interRegular: require('./assets/fonts/Inter-Regular.ttf'),
+    interLight: require('./assets/fonts/Inter-Light.ttf'),
+  });
+
+  if (!loaded) return null;
 
   return (
-    <View style={styles.container}>
-      <Text>Finally found that. Do you have anything to say</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
