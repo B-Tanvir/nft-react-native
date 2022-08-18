@@ -1,6 +1,6 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { COLORS, SHADOWS, SIZES } from '../constants';
+import { COLORS, FONTS, SHADOWS, SIZES } from '../constants';
 
 export function CircleButton({ imgUrl, handlePress, ...props }) {
   return (
@@ -29,10 +29,28 @@ export function CircleButton({ imgUrl, handlePress, ...props }) {
     </TouchableOpacity>
   );
 }
-export function TrianButton() {
+export function RectButton({ minWidth, fontsize, handlePress, ...props }) {
   return (
-    <View>
-      <Text>Button</Text>
-    </View>
+    <TouchableOpacity
+      onPress={handlePress}
+      style={{
+        backgroundColor: COLORS.primary,
+        borderRadius: SIZES.extraLarge,
+        minWidth: minWidth,
+        padding: SIZES.small,
+        ...props,
+      }}
+    >
+      <Text
+        style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: fontsize,
+          color: COLORS.white,
+          textAlign: 'center',
+        }}
+      >
+        Place a number
+      </Text>
+    </TouchableOpacity>
   );
 }
