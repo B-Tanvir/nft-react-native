@@ -8,5 +8,3 @@ const FocusedStatusBar = (props) => {
 };
 
 export default FocusedStatusBar;
-
-const styles = StyleSheet.create({});
