@@ -1,1 +1,1 @@
-# nft-react-native
+# React Native app for Managing NFTs
